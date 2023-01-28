@@ -16,7 +16,9 @@ const userroutes=require('./Routes/user');
 const accesslogstream=fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'});
 const errorcontroller=require('./Controllers/error');
 const app=express();
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    credentials: true}));
 app.use(bodyparser.json());
 // app.use(helmet());
 // app.use(morgan('combined',{stream:accesslogstream}));

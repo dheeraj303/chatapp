@@ -7,5 +7,5 @@ const router=express.Router();
 router.post('/signup',usercontroller.postuser);
 // router.post('/forget-password',usercontroller.forgetpassword);
 // router.post('/change-password/:password_id',usercontroller.changepassword);
-// router.post('/login',usercontroller.login);
+router.post('/login',usercontroller.login);
 module.exports=router;

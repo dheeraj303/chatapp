@@ -22,8 +22,9 @@ async function signup(e){
             const childhtml='<h1>You are a premium User </h1> <button id="leaderboard" onclick="getleaderboard()" class="btn btn-lg btn-primary">Show Leaderboard</button>';
             document.querySelector('#premium').innerHTML=childhtml;
         }
-        localStorage.setItem('token',response.data[0].token)
-        window.location.href='expense.html';
+        localStorage.setItem('token',response.data[0].token);
+        alert("User logged in");
+        // window.location.href='expense.html';
      }
      if(response.data[0].status==0){
         document.getElementById('msg').textContent=response.data[0].message;

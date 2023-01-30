@@ -5,6 +5,6 @@ const express=require('express');
 const router=express.Router();
 
 router.post('/message',auth.authenticate,messagecontroller.postmessage);
-router.get('/message',auth.authenticate,messagecontroller.getmessage);
+router.get('/message/:lastmsgid',auth.authenticate,messagecontroller.getmessage);
 
 module.exports=router;

@@ -10,26 +10,78 @@
 
     <title>Chat App</title>
     <style>
-      footer{
+      body{
+        background: linear-gradient(
+          to bottom,
+          rgb(0,167,131) 0%,
+          rgb(0,167,131) 10%,
+          white 10%,
+          white 100%
+        );
+        padding: 15px;
+        z-index: 0;
+      }
+      .footer{
         position: fixed;
         bottom: 0;
         background-color: aqua;
+        /* text-align: end; */
+        padding: 0 15px;
+    width: 100%;
+    display: flex;
+      }
+      .footer #message{
+        width: 50%;
+        padding: 8px 15px;
+
+        border-radius: 10px;
+        color: #000;
+      }
+      .user{
+      background-color: #F0F2F5;
+        padding: 0 0 50px 10px;
+        border-right: 1px solid black;
+        height: 100vh;
+        /* border-radius: 0 15px 15px 0; */
+      }
+      .message{
+        background-color:white ;
+        padding-bottom: 20px;
+      }
+      .msg{
+        background-color: #F0F2F5;
       }
     </style>
   </head>
   <body>
-    <div class="container text-center" >
-        <div style="color:rgb(183, 167, 235)" id="msg"><h1>Chat App</h1></div>
-        <div id="chat">
-          
+    <div class="container-fluid " >
+        <!-- <div style="color:rgb(183, 167, 235)" id="msg"><h1>Chat App</h1></div> -->
+        <div class="row">
+          <div class="col-4 user">
+              
+            <h4>Vchat</h4>
+              
+          </div>
+          <div class="col-8 message p-0">
+            <div class="msg">
+              <h4>Messages</h4>
+            </div>
+            
+            <div id="chat">
+
+            </div>
+            <div class="footer">
+
+              <input type="text" id="message">
+              <button id="send">Send</button>
+            </div>
+          </div>
         </div>
+       
  
     </div>
     <footer class="container-fluid">
-      <div class="text-center">
-        <input type="text" id="message">
-        <button id="send">Send</button>
-      </div>
+      
     </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./chat.js"></script>

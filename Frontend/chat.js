@@ -26,21 +26,33 @@ async function send(e){
     }
 }
 
-window.addEventListener('DOMContentLoaded',getmessage);
+window.addEventListener('DOMContentLoaded',fetchMessageFromLocal);
+// window.addEventListener('DOMContentLoaded',getmessage);
 setInterval(() =>{
     getmessage();
 }, 1000);
 async function getmessage(){
-    const parentnode=document.querySelector('#chat').innerHTML="";
+    
     // e.preventDefault();
     try{
+        
         const token=localStorage.getItem('token');
-        let response=await axios.get('http://localhost:3000/message',{headers:{"Authorization":token}})
+        console.log(token);
+       let message=[];
+        if(localStorage.hasOwnProperty('message')){
+             message=JSON.parse(localStorage.getItem('message'));
+       
+            var lastmsgid=message[message.length-1].id;
+        
+        }
+        let response=await axios.get(`http://localhost:3000/message/${lastmsgid}`,{headers:{"Authorization":token}})
         console.log(response.data.message[0]);
      if(response.data.status==1){
-        for(var i=0;i<response.data.message.length;i++){
-            viewmessage(response.data.message[i]);
-        }
+        var arr3 = [...message, ...response.data.message];
+        var msg=JSON.stringify(arr3);
+        console.log(msg);
+        localStorage.setItem('message',msg)
+        fetchMessageFromLocal();
         // document.getElementById('msg').textContent=response.data[0].message;
         // window.SharedArrayBuffer.location
      }
@@ -50,6 +62,15 @@ async function getmessage(){
     }
     catch(err){
         console.log(err);
+    }
+}
+
+function fetchMessageFromLocal(){
+    document.querySelector('#chat').innerHTML="";
+    const message=JSON.parse(localStorage.getItem('message'));
+    console.log(message);
+    for(var i=0;i<message.length;i++){
+        viewmessage(message[i]);
     }
 }
 

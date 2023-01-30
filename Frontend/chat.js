@@ -27,9 +27,12 @@ async function send(e){
 }
 
 window.addEventListener('DOMContentLoaded',getmessage);
-
-async function getmessage(e){
-    e.preventDefault();
+setInterval(() =>{
+    getmessage();
+}, 1000);
+async function getmessage(){
+    const parentnode=document.querySelector('#chat').innerHTML="";
+    // e.preventDefault();
     try{
         const token=localStorage.getItem('token');
         let response=await axios.get('http://localhost:3000/message',{headers:{"Authorization":token}})

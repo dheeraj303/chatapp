@@ -7,11 +7,12 @@ const fs=require('fs');
 // const helmet=require('helmet');
 // const morgan=require('morgan');
 const User= require('./Models/user');
-// const Expense=require('./models/expense');
+const Message=require('./Models/message');
 // const Order=require('./models/order');
 // const DownloadData=require('./models/downloaddata');
 // const Password=require('./models/password');
 const userroutes=require('./Routes/user');
+const messageroutes=require('./Routes/message');
 
 const accesslogstream=fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'});
 const errorcontroller=require('./Controllers/error');
@@ -23,13 +24,15 @@ app.use(bodyparser.json());
 // app.use(helmet());
 // app.use(morgan('combined',{stream:accesslogstream}));
 app.use(userroutes);
+app.use(messageroutes);
 app.use((req,res)=>{
     res.sendFile(path.join(__dirname,`Frontend/${req.url}`));
 })
 app.use(errorcontroller.get404);
 
 const sequelize = require('./Util/database');
-
+User.hasMany(Message);
+Message.belongsTo(User);
 sequelize.sync().then((result)=>{
     // console.log(result);
     app.listen(process.env.PORT)

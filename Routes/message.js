@@ -4,9 +4,7 @@ const auth=require('../middlewares/auth');
 const express=require('express');
 const router=express.Router();
 
-// router.get('/signup',usercontroller.getusers);
 router.post('/message',auth.authenticate,messagecontroller.postmessage);
-// router.post('/forget-password',usercontroller.forgetpassword);
-// router.post('/change-password/:password_id',usercontroller.changepassword);
-// router.post('/login',usercontroller.login);
+router.get('/message',auth.authenticate,messagecontroller.getmessage);
+
 module.exports=router;

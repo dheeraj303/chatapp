@@ -58,43 +58,11 @@
         <!-- <div style="color:rgb(183, 167, 235)" id="msg"><h1>Chat App</h1></div> -->
         <div class="row">
           <div class="col-4 user">
-              
-            <h4>Vchat</h4>
-             <span>Create Group</span> 
-             <form id="cform">
-              <div class="form-group" >
-                <label for="group">Group Name</label>
-                <input type="text" class="form-control" id="group"  placeholder="Enter Group Name">
-              </div>
-              <button type="submit" id="cgroup" class="btn btn-primary">Submit</button>
-            </form>
-
-            <form id="cform">
-              <div class="form-group" >
-                <label for="group">Enter Email of the user you want to add</label>
-                <input type="name" class="form-control" id="useremail"  placeholder="Enter Email ">
-              </div>
-              <button type="submit" id="adduser" class="btn btn-primary">Add To Group</button>
-            </form>
-            <nav class="nav flex-column" id="grouplist">
-            
-            
-            </nav>
-            
+           <h1>Your Groups</h1>   
+           <ul id="group"></ul>
           </div>
-          <div class="col-8 message p-0" id="group">
-            <div class="msg">
-              <h4>Messages</h4>
-            </div>
-          
-            <div id="chat">
-
-            </div>
-            <div class="footer">
-
-              <input type="text" id="message">
-              <button id="send">Send</button>
-            </div>
+          <div class="col-8 message p-0" >
+           <ul id="user"></ul>
           </div>
         </div>
        
@@ -104,7 +72,7 @@
       
     </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js" integrity="sha512-QTnb9BQkG4fBYIt9JGvYmxPpd6TBeKp6lsUrtiVQsrJ9sb33Bn9s0wMQO9qVBFbPX3xHRAsBHvXlcsrnJjExjg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="./chat.js"></script>
+<script src="./grouplist.js"></script>
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -19,7 +19,7 @@ async function signup(e){
         console.log(response.data[0])
         localStorage.setItem('token',response.data[0].token);
         alert("User logged in");
-        // window.location.href='expense.html';
+        window.location.href='chat.html';
      }
      if(response.data[0].status==0){
         document.getElementById('msg').textContent=response.data[0].message;

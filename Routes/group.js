@@ -11,4 +11,5 @@ router.get('/getgroupmessage',auth.authenticate,groupcontroller.getallchatmessag
 router.get('/getgroupuser/:gid',auth.authenticate,groupcontroller.getgroupuser);
 router.get('/removefromgroup/:userId/:gid',auth.authenticate,groupcontroller.deletefromgroup);
 router.get('/makeadmin/:userId/:gid',auth.authenticate,groupcontroller.makeadmin);
+router.post('/chatimage',auth.authenticate,groupcontroller.chatimage);
 module.exports=router;

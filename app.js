@@ -4,11 +4,14 @@ const bodyparser=require('body-parser');
 const path=require('path');
 const cors=require('cors');
 const fs=require('fs');
+const sequelize = require('./Util/database');
 // const helmet=require('helmet');
 // const morgan=require('morgan');
 const User= require('./Models/user');
 const Message=require('./Models/message');
 const Group=require('./Models/group');
+
+const Chatimage = require('./Models/chatimage');
 const UserGroup=require('./Models/usergroup');
 // const Order=require('./models/order');
 // const DownloadData=require('./models/downloaddata');
@@ -33,12 +36,17 @@ app.use((req,res)=>{
 })
 app.use(errorcontroller.get404);
 
-const sequelize = require('./Util/database');
+
 User.hasMany(Message);
 Message.belongsTo(User);
 
 Group.hasMany(Message);
 Message.belongsTo(Group);
+Group.hasMany(Chatimage);
+Chatimage.belongsTo(Group);
+
+User.hasMany(Chatimage);
+Chatimage.belongsTo(User);
 
 User.belongsToMany(Group,{through:UserGroup});
 Group.belongsToMany(User,{through:UserGroup});

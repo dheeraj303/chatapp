@@ -1,5 +1,5 @@
 const Group=require('../Models/group');
-
+const Chatimage=require('../Models/chatimage');
 const {Sequelize,Op}=require('sequelize');
 const GroupUser=require('../Models/usergroup');
 const Message=require('../Models/message');
@@ -148,3 +148,20 @@ exports.makeadmin=async (req,res)=>{
         // await grp_admin.destroy();
         res.status(200).json({status:"1",message:"The User is now Admin"});
 }
+
+
+exports.chatimage=async(req,res,next)=>{
+
+  const chatmessage=req.body.picture;
+  const groupid=req.body.groupid;
+
+
+            await Chatimage.create(
+            {picture:chatmessage,userId:req.user.id,groupId:groupid})
+          .then(()=>{
+          res.json({message:"Image sent successfully", status:"1"})
+         })
+       .catch(err=>{
+       res.send(err)
+        })
+  }
